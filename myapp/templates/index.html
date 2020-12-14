@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Socket.IO Fiddle</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.min.js"></script>
+    <script>
+        'use strict';
+
+(function() {
+
+  const socket = io();
+  socket.on('new_device', data => {
+    console.log(data);
+  });
+
+  socket.on('test', function (data) {
+    console.log(data);
+})
+
+})();
+    </script>
+  </body>
+</html>

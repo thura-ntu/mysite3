@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Plugin JavaScript -->
+{#<script src="{% static "FundBook_Core/js/reconnecting-websocket.js" %}"></script>#}
+
+{#<script>#}
+{#        var loc = window.location;#}
+{#        var wsStart = "ws://"#}
+{#        if (loc.protocol === 'https:'){#}
+{#            wsStart = 'wss://'#}
+{#        }#}
+{#        var url = wsStart + loc.host + loc.pathname;#}
+{#        console.log(url)#}
+{#        var socket = new ReconnectingWebSocket(url);#}
+{#        const tt = document.querySelector('#task_text');#}
+{##}
+{#        socket.onmessage = function(e) {#}
+{#            console.log("message", e)#}
+{#            const data = JSON.parse(e.data);#}
+{#            console.log("parse", data)#}
+{#            console.log("notification", data.notification)#}
+{#            if(data.event == "New Notification"){#}
+{#                 var el = document.createElement("li");#}
+{#                 el.innerHTML = data.notification;#}
+{#                 tt.appendChild(el);#}
+{##}
+{#            }#}
+{##}
+{##}
+{#    }#}
+{#     socket.onopen = function(e) {#}
+{#        console.log("open", e)#}
+{#    }#}
+{#     socket.onerror = function(e) {#}
+{#        console.log("error", e);#}
+{#        console.error('Notification socket closed unexpectedly')#}
+{#    }#}
+{#     socket.onclose = function(e) {#}
+{#        console.log("close", e)#}
+{#    }#}
+{##}
+{#</script>#}
+
+<script>
+    var loc = window.location
+    var wsStart = "ws://"
+    if (loc.protocol == 'https:'){
+        wsStart = 'wss://'
+    }
+    var endpoint = wsStart + loc.host + "/websockets/"
+    console.log(endpoint)
+
+    socket = new WebSocket(endpoint);
+
+    socket.onopen = function(message) {
+        console.log("open", message);
+      }
+
+    socket.onmessage = function(message) {
+        console.log("message", message);
+    }
+
+    socket.onerror = function(message) {
+        console.log("error", message);
+    }
+
+    socket.onclose = function(message) {
+        console.log("close", message);
+    }
+</script>
+
+</body>
+</html>
