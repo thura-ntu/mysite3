@@ -9,27 +9,26 @@
 </body>
 </html><!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Socket.IO Fiddle</title>
-  </head>
-  <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.min.js"></script>
-    <script>
-        'use strict';
+</head>
+<body>
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.min.js"></script>#}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.min.js"/>
+<script>
+    'use strict';
+    {#const socket = io();#}
+    let socket = io('localhost:8000');
+    console.log(io);
+    socket.on('new_device', data => {
+        console.log(data);
+    });
 
-(function() {
+    socket.on('test', function (data) {
+        console.log(data);
+    })
 
-  const socket = io();
-  socket.on('new_device', data => {
-    console.log(data);
-  });
-
-  socket.on('test', function (data) {
-    console.log(data);
-})
-
-})();
-    </script>
-  </body>
+</script>
+</body>
 </html>

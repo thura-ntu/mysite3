@@ -1,10 +1,14 @@
 from django.shortcuts import render
+from .models import Device
+from datetime import datetime
 
 
 # Create your views here.
 def index(request):
+    obj_device = Device()
+    obj_device.address = "asdfsadf - " + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    obj_device.save()
     return render(request, 'index.html')
-
 
 # import eventlet
 #

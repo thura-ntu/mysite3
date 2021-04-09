@@ -2,7 +2,9 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.forms import model_to_dict
-from django.db.models import signals
+# from django.db.models import signals
+# import socketio
+# import asyncio
 import socketio
 sio = socketio.AsyncServer(async_mode='asgi')
 

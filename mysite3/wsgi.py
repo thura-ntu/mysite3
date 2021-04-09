@@ -19,3 +19,14 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite3.settings')
 application = get_wsgi_application()
 # sio = socketio.Server()
 # application = socketio.WSGIApp(sio, application)
+
+
+from myapp import sio
+import socketio
+
+application = socketio.WSGIApp(sio, application)
+
+import eventlet
+import eventlet.wsgi
+
+eventlet.wsgi.server(eventlet.listen(('', 8000)), application)
