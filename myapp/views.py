@@ -10,7 +10,7 @@ def index(request):
     obj_device.save()
     return render(request, 'index.html')
 
-# import eventlet
+import eventlet
 #
 # async_mode = eventlet
 # import os
